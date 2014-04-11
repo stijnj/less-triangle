@@ -4,27 +4,30 @@
     width: 0;
     height: 0;
 }
-.triangle(@direction, @size, @color) when (@direction = up) {
-    .triangle-base();
-    border-left: @size solid transparent;
-    border-right: @size solid transparent;
-    border-bottom: @size solid @color;
+.triangle(@direction, @size, @color) {
+    .triangle(@direction, @size * 2, @size, @color);
 }
-.triangle(@direction, @size, @color) when (@direction = down) {
+.triangle(@direction, @width, @height, @color) when (@direction = up) {
     .triangle-base();
-    border-left: @size solid transparent;
-    border-right: @size solid transparent;
-    border-top: @size solid @color;
+    border-left: (@width / 2)solid transparent;
+    border-right: (@width / 2)solid transparent;
+    border-bottom: @height solid @color;
 }
-.triangle(@direction, @size, @color) when (@direction = left) {
+.triangle(@direction, @width, @height, @color) when (@direction = down) {
     .triangle-base();
-    border-top: @size solid transparent;
-    border-bottom: @size solid transparent;
-    border-right: @size solid @color;
+    border-left: (@width / 2) solid transparent;
+    border-right: (@width / 2) solid transparent;
+    border-top: @height solid @color;
 }
-.triangle(@direction, @size, @color) when (@direction = right) {
+.triangle(@direction, @width, @height, @color) when (@direction = left) {
     .triangle-base();
-    border-top: @size solid transparent;
-    border-bottom: @size solid transparent;
-    border-left: @size solid @color;
+    border-top: (@width / 2) solid transparent;
+    border-bottom: (@width / 2) solid transparent;
+    border-right: @height solid @color;
+}
+.triangle(@direction, @width, @height, @color) when (@direction = right) {
+    .triangle-base();
+    border-top: (@width / 2) solid transparent;
+    border-bottom: (@width / 2) solid transparent;
+    border-left: @height solid @color;
 }
